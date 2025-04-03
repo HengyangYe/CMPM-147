@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment X - Subject/Topic</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFER></script>
+	<!-- Use me for a JavaScript OOP Project -->
+	<script type="text/javascript" src="./js/project.js" DEFER></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment X - Subject/Topic</h1>
+
+			<div class="minor-section">
+				<div id="canvas-container">
+					<!-- canvas will be added here -->
+				</div>
+                <div class="fullscreen-box">
+                    <button id="fullscreen">Fullscreen</button>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>What are you trying to acomplish with this experiment?</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+				<p>Describe in detail what you did technically and how it works?</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
