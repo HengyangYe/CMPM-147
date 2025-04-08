@@ -31,4 +31,63 @@ function main() {
 }
 
 // let's get this party started - uncomment me
-//main();
+// Random‑Starship Generator
+const fillers = {
+  wings: [
+    "Delta-wing", "Forward-swept", "Gull-wing", "Oblique pivot", "X-wing",
+    "Canard fins", "Solar-sail foldables", "Inverted-V", "Ring pylon",
+    "Morphing feather", "Split-scissor", "Cyclone rotors"
+  ],
+  hull: [
+    "Saucer core", "Needle prow", "Cigar fuselage", "Arrowhead wedge",
+    "Spherical pod", "Ring-torus", "Segmented lattice", "Organic carapace",
+    "Stealth shard", "Box freighter", "Crystal prism", "Fractal spiral"
+  ],
+  role: [
+    "Interceptor", "Heavy fighter", "Exploration scout", "Colony transport",
+    "Mining barge", "Rescue shuttle", "Jump-jet courier", "Medical frigate",
+    "Gunship", "Stealth bomber", "Survey drone-mothership"
+  ],
+  equipment: [
+    "Twin railguns", "Plasma turrets", "Missile pods", "Graviton beam",
+    "Point-defense lasers", "EMP cannons", "Drone bay", "Quantum jammer",
+    "Kinetic gauss battery", "Shield projectors", "Nanite repair swarm",
+    "Holographic decoys"
+  ]
+};
+
+const template = `🚀  Presenting the $role-class starship!
+
+• Hull: $hull
+• Wing configuration: $wings
+• Primary equipment: $equipment
+
+Prepare for launch beyond the frontier!`;
+
+// STUDENTS: You don't need to edit code below this line.
+
+const slotPattern = /\$(\w+)/;
+
+function replacer(match, name) {
+  let options = fillers[name];
+  if (options) {
+    return options[Math.floor(Math.random() * options.length)];
+  } else {
+    return `<UNKNOWN:${name}>`;
+  }
+}
+
+function generate() {
+  let story = template;
+  while (story.match(slotPattern)) {
+    story = story.replace(slotPattern, replacer);
+  }
+
+  /* global box */
+  box.innerText = story;
+}
+
+/* global clicker */
+clicker.onclick = generate;
+
+generate();
