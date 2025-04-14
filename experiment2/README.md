@@ -1,0 +1,5 @@
+Color: The sky, and bird colors were sampled from the inspiring image using the Photoshop eyedropper tool. Since it is “impressionistic”, I chose colors that make the stone more contrasting.
+Primitives: Clouds are made from ellipse() overlays; waves are multiple line(); seabirds are drawn directly with point()/arc() to create little black dots and flight arcs.All done with just the basic p5 elements, no custom shapes.
+Polygons: The dark green cliff in the distance and the two reefs in the foreground both use beginShape() + multiple vertex() to randomly generate a noisy silhouette, then fill in the shadows once, and the highlights once, to create a three-dimensional silhouette.
+Composition: Different random seed values lead to he position and size of the clouds are rearranged, the landing points of the seabirds are all refreshed, and the cliff noise is resampled.
+Life: The zoff accumulates with each frame, creating the effect of clouds drifting slowly from left to right.
