@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 2 - Living Impressions</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -32,7 +32,7 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 2 - Living Impressions</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
@@ -45,17 +45,17 @@
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>I picked a photo I took that day at the Santa Cruz cliffs for my impressionistic creation. I started with a very simple “horizontal division”: HORIZON_Y divides the canvas into two halves, sky and sea, and then superimpose layer by layer. I randomly placed some clouds in the sky to make the picture less monotonous, and I made a cliff layer based on Berlin noise, which I got inspired by the level of CMPM170. On the sea I made 6 sine + noise mixed wavebands, which, like the clouds, will scroll over time with zOff, and then there are random birds. The reimagine button can replace all seeds, and all the above noises are resampled.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<p>The only global time variable, zOff, is incremented by 0.00055/frame and is shared by the clouds and waves. For the clouds I chose to store 3 random base values (x, y, size) for each cloud; a smooth drift is achieved in draw() using noise(base, zOff). I wrote some more about the use of noise in the Description. I didn't use any bitmap textures, I couldn't really understand what that was about. I only used the built-in primitives of p5.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>This assignment I think is very interesting this time, because this is the basic logic of generation, and I really like this assignment. If I had more time, I might also try to add more textures, because this is something I want to study, but don't have time to study, because I have 20 units this quarter and am really busy.</p>
 			</div>
 
 		</section>
