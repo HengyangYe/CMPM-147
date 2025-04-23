@@ -40,7 +40,27 @@ body {
         letter-spacing:6px;      /* 试着调到 5‑8px，把宽度拉到和行高接近 */
       }
       
-
+#flex-wrapper #canvas-container-1{
+    width: auto !important;   /* 关键：覆盖原来 100% */
+    flex: 0 0 auto;           /* 不拉伸也不收缩 */
+  }
+  
+  /* 保持横向并排，稍留一点点缝隙 */
+  #flex-wrapper{
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;             /* 你想多窄就继续调这个 */
+  }
+  
+  /* 给 textarea 合理的初始可视尺寸 */
+    #asciiBox-1{
+        font-family:monospace;
+        white-space: pre;
+        resize: horizontal;
+        font-size:16px;
+        line-height:16px;        /* 行高 = 字高 */
+        letter-spacing:6px;      /* 试着调到 5‑8px，把宽度拉到和行高接近 */
+      }
 
 
   

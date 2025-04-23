@@ -1,78 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment 3 - Overworld/Dungeon</title>
+  <!-- This title is used for tabs and bookmarks -->
+  <title>Experiment 3 - Overworld/Dungeon</title>
 
-	<!-- Use UTF character set, a good idea with any webpage -->
-	<meta charset="UTF-8" />
-	<!-- Set viewport so page remains consistently scaled w narrow devices -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Use UTF character set, a good idea with any webpage -->
+  <meta charset="UTF-8" />
+  <!-- Set viewport so page remains consistently scaled w narrow devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
-	<link rel="stylesheet" type="text/css" href="../css/site.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	
-	<!-- Load jQuery library -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous"></script>
-	<!-- Load p5.js library -->
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
-	
-	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
-    <script type="text/javascript" src="../js/site.js" DEFER></script>
-	<!-- Use me for a JavaScript OOP Project -->
-	<script type="text/javascript" src="./js/project.js" DEFER></script>
-	<!-- Use me for a p5.js project -->
-	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+  <!-- Include CSS file, including a site-wide CSS and for this particular page -->
+  <link rel="stylesheet" type="text/css" href="../css/site.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <!-- Load jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+  <!-- Load p5.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+  <!-- Your existing JS -->
+  <script type="text/javascript" src="../js/site.js" defer></script>
+  <script type="text/javascript" src="./js/project.js" defer></script>
+  <script type="text/javascript" src="./js/sketch.js" defer></script>
+  <script type="text/javascript" src="./js/dungeon.js" defer></script>
 </head>
 <body>
-	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
-	<main id="content">
-		<section>
+  <main id="content">
+    <section>
+      <h1>Experiment 3 - Overworld/Dungeon</h1>
 
-			<h1>Experiment 3 - Overworld/Dungeon</h1>
+      <div class="minor-section">
+        <!-- Overworld 画布和 ASCII 示意图的并排容器 -->
+        <div id="canvas-and-text">
+          <span id="canvas-container"><!-- Overworld canvas --></span>
+          <textarea id="asciiBox" rows="40" cols="40"></textarea>
+        </div>
 
-			<div class="minor-section">
-				<div id="canvas-and-text">
-					<span id="canvas-container"></span>
-				  
-					<textarea id="asciiBox" rows="40" cols="40"></textarea>
-				  </div>				  
-  
-  				<button id="reseedButton">Reseed</button>
-  				<span id="seedReport">seed 0</span>
-  
-                <div class="fullscreen-box">
-                    <button id="fullscreen">Fullscreen</button>
-                </div>
-			</div>
+        <button id="reseedButton">Reseed</button>
+        <span id="seedReport">seed 0</span>
 
-			<div class="minor-section">
-				<h2>Description</h2>
-				<p>I did an Overworld generation by using autotilling as well as some random autogeneration techniques, and it was an interesting project. There's also a Dungeon project that has a link directly below.</p>
-			</div>
+        <div class="fullscreen-box">
+          <button id="fullscreen">Fullscreen</button>
+        </div>
+      </div>
 
-			<div class="minor-section">
-				<h2>Technical</h2>
-				<p>The part about Overworld doesn't really use any special techniques, it's all based on the ppt. Noise maps were used, as well as the newly learned autotilling technique, but for Dungeon I used something a bit more interesting that I learned in my CMPM 170 class where we learned how to do a dungeon generation using BSP. I carried that program over to this assignment.</p>
-			</div>
+      <div class="minor-section">
+        <!-- Dungeon 画布和 ASCII 示意图的并排容器 -->
+        <div id="canvas-and-text-1">
+          <span id="canvas-container-1"><!-- Dungeon canvas --></span>
+          <textarea id="asciiBox-1" rows="40" cols="40"></textarea>
+        </div>
 
-			<div class="minor-section">
-				<h2>Reflection</h2>
-				<p>I don't know why, but in this assignment my glitch keeps crashing, I change the solution and it shows base crashing, I change the readme and it shows base crashing, I'm losing my mind. I can't find out why, so this assignment took an exceptionally long time.</p>
-			</div>
+        <button id="reseedButton-1">Reseed</button>
+        <span id="seedReport-1">seed 0</span>
 
-		</section>
-		<nav id="links" class="minor-section">
-			<!-- Put link back to homepage here. -->
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-				<li><a href="../experiment3-dungeon/index.html">Experiment 3 - Dungeon</a></li>
+        <div class="fullscreen-box">
+          <button id="fullscreen">Fullscreen</button>
+        </div>
+      </div>
 
-            </ul>
-		</nav>
-	</main>
+      <div class="minor-section">
+		<h2>Description</h2>
+		<p>I did an Overworld generation by using autotilling as well as some random autogeneration techniques, and it was an interesting project. There's also a Dungeon project that has a link directly below.</p>
+	</div>
+
+	<div class="minor-section">
+		<h2>Technical</h2>
+		<p>The part about Overworld doesn't really use any special techniques, it's all based on the ppt. Noise maps were used, as well as the newly learned autotilling technique, but for Dungeon I used something a bit more interesting that I learned in my CMPM 170 class where we learned how to do a dungeon generation using BSP. I carried that program over to this assignment.</p>
+	</div>
+
+	<div class="minor-section">
+		<h2>Reflection</h2>
+		<p>I don't know why, but in this assignment my glitch keeps crashing, I change the solution and it shows base crashing, I change the readme and it shows base crashing, I'm losing my mind. I can't find out why, so this assignment took an exceptionally long time.</p>
+	</div>
+    </section>
+    <nav id="links" class="minor-section">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../experiment3-dungeon/index.html">Experiment 3 – Dungeon(Old)</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- ==== 实例化两份 p5 草稿 ==== -->
+  <script>
+    // Overworld 实例
+    new p5(p => {
+      // 把 sketch.js 中的全局函数接入 p5 实例
+      p.preload = window.sketchPreload;
+      p.setup   = window.sketchSetup;
+      p.draw    = window.sketchDraw;
+    }, 'canvas-container');
+
+    // Dungeon 实例
+    new p5(p => {
+      p.preload = window.dungeonPreload;
+      p.setup   = window.dungeonSetup;
+      p.draw    = window.dungeonDraw;
+    }, 'canvas-container-1');
+  </script>
 </body>
 </html>
