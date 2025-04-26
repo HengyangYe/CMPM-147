@@ -1,3 +1,4 @@
+// terrace.js
 "use strict";
 /* global p5, XXH, $, createCanvas, createDiv, createButton, createSpan,
    createInput, createP, keyIsDown, LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW,
@@ -6,7 +7,7 @@
    sin, abs, atan2, sqrt, millis, TWO_PI, exp, constrain, map */
 
 // =============================================
-// 多世界状态机 & 分发逻辑
+// 1. 多世界状态机 & 分发逻辑
 // =============================================
 let currentWorld = 'starry';  // 'terrace' | 'city' | 'starry'
 
@@ -23,9 +24,36 @@ function setup() {
 
   // 2) 相机初始化
   camera_offset   = createVector(-width/2, height/2);
-  camera_velocity = createVector(0,0);
+  camera_velocity = createVector(0, 0);
 
-  // 3) 切换按钮 + key/seed 工具栏
+  // 3) 绑定所有画布内的交互到 canvas.elt
+  const elt = canvas.elt;
+  // 3a) 点击——分发给当前世界的 tileClicked
+  elt.addEventListener('click', e => {
+    // 如果点在 info 工具栏内，跳过
+    if (e.target.closest('.info')) return;
+    const wp = screenToWorld(
+      [-mouseX, mouseY],
+      [camera_offset.x, camera_offset.y]
+    );
+    window[`p3_${currentWorld}_tileClicked`](wp[0], wp[1]);
+  });
+  // 3b) 按下——Starry 专用开始拖拽
+  elt.addEventListener('mousedown', e => {
+    if (e.target.closest('.info')) return;
+    if (currentWorld === 'starry' && window.p3_starry_mousePressed) {
+      window.p3_starry_mousePressed();
+    }
+  });
+  // 3c) 移动——Starry 专用拖拽更新
+  elt.addEventListener('mousemove', e => {
+    if (e.target.closest('.info')) return;
+    if (mouseIsPressed && currentWorld === 'starry' && window.p3_starry_mouseDragged) {
+      window.p3_starry_mouseDragged();
+    }
+  });
+
+  // 4) 切换按钮 + key/seed 工具栏
   const toolbar = createDiv().addClass('info').parent("canvas-container");
   createButton('Terrace').parent(toolbar)
     .mousePressed(() => switchWorld('terrace'));
@@ -44,17 +72,18 @@ function setup() {
   createSpan('  World seed: ').parent(toolbar);
   createSpan('').id('world-seed').parent(toolbar);
 
-  // 4) 操作提示
+  // 5) 操作提示
   createP('Arrow keys scroll. Clicking changes tiles.').parent("canvas-container");
 
-  // 5) 初始化世界
+  // 6) 初始化当前世界
   rebuildWorld(input.value());
   select('#world-seed').html(worldSeed);
   window[`p3_${currentWorld}_setup`]?.();
 
-  // 6) 监听 resize
+  // 7) 监听窗口 resize
   $(window).resize(resizeCanvasToContainer);
 }
+
 
 function draw() {
   // 相机滚动
@@ -73,30 +102,6 @@ function draw() {
   window[`p3_${currentWorld}_drawAfter`]?.();
 }
 
-function mouseClicked() {
-    // 如果点在输入框，就放行
-    if (document.activeElement.tagName === 'INPUT') {
-      return;
-    }
-    // 否则按原来的逻辑处理 tile 点击
-    const wp = screenToWorld(
-      [-mouseX, mouseY],
-      [camera_offset.x, camera_offset.y]
-    );
-  //return false;
-}
-function mousePressed() {
-  if (currentWorld === 'starry' && window.p3_starry_mousePressed) {
-    window.p3_starry_mousePressed();
-    //return false;
-  }
-}
-function mouseDragged() {
-  if (currentWorld === 'starry' && window.p3_starry_mouseDragged) {
-    window.p3_starry_mouseDragged();
-    //return false;
-  }
-}
 
 function switchWorld(name) {
   currentWorld = name;
