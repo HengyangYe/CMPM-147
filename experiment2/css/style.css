@@ -19,3 +19,22 @@ body {
 }
 
 #canvas-container { position: relative; }
+
+    /* 控制面板浮层样式 */
+    #controls {
+        text-align: center;
+        margin: 10px 0;
+      }
+      #controls label {
+        margin-right: 20px;
+        font-size: 14px;
+      }
+      #controls input {
+        width: 120px;
+        padding: 2px 4px;
+        font-size: 14px;
+      }
+      #controls span {
+        margin-right: 20px;
+        font-size: 14px;
+      }
