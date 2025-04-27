@@ -325,7 +325,7 @@ function p3_city_drawTile(i,j){
   push();
   const currH=getBuildingHeight(i,j), aboveH=getBuildingHeight(i,j-1);
   if(currH<6){
-    if(aboveH>=3) fill(18,20,32,120);
+    if(aboveH>=20) fill(18,20,32,120);
     else {
       fill(50,60,90,240);
       beginShape();
