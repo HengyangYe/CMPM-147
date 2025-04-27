@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 4 - Infinite Worlds</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -33,7 +33,7 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 4 - Infinite Worlds</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
@@ -46,17 +46,21 @@
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>For each map I used a different action logic. The effects that can be clicked on are different for different maps.</p>
+				<p>Starry: Clicking on a planet causes the corresponding planet to glow, emitting a more intense light as the number of clicks increases. Planets can be dragged. Clicking any planet four times will turn a planet into a black hole, an irreversible process.</p>
+				<p>Terrace: Clicking to planting seedlings for fear of terracing. </p>
+				<p>City: Click on any building to make it taller.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<p>This time, this integration scheme does not use the “instantiation mode” of p5.js as in the last Ex3, this time, because in order to do switching to prevent different clicks from conflicting, so I made currentWorld to dynamically distribute calls to p3_terrace_*, p3_city_*, p3_starry_*, p3_city_*, p3_starry_*, p3_starry_* and these sets of functions. starry_* sets of functions, so instead of having a new p5 instance for each world.
+					I use a combination of program generation algorithms to create a dynamically evolving virtual landscape based on an example given by my professor. The experiment is centered on a unique hash value generated interactively by the user as a seed to drive the program generation algorithm.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>There was a bit more to do this time around I'll be honest, although this was easier than any of the previous ones, the amount of work tripled, and it actually took quite a bit of time to want different styles as well as to realize the ideas I wanted. I have four classes this quarter and I really wish there was less writing thing to do.</p>
 			</div>
 
 		</section>
