@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 5 - Evolutionary Impressions</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -15,56 +15,89 @@
 
 	<!-- Load jQuery library -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous"></script>
+	        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	        crossorigin="anonymous"></script>
+
 	<!-- Load p5.js library -->
 	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
 
 	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
-    <script type="text/javascript" src="../js/site.js" DEFER></script>
-	<!-- Use me for a JavaScript OOP Project -->
-	<script type="text/javascript" src="./js/project.js" DEFER></script>
-	<!-- Use me for a p5.js project -->
-	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+	<script type="text/javascript" src="../js/site.js" defer></script>
+	<script type="text/javascript" src="./js/project.js" defer></script>
+	<script type="text/javascript" src="./js/mydesign.js" defer></script>
+	<script type="text/javascript" src="./js/sketch.js"  defer></script>
 </head>
+
 <body>
-	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
-	<main id="content">
-		<section>
+<main id="content">
+<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+	<h1>Experiment 5 - Evolutionary Impressions</h1>
 
-			<div class="minor-section">
-				<div id="canvas-container">
-					<!-- canvas will be added here -->
-				</div>
-                <div class="fullscreen-box">
-                    <button id="fullscreen">Fullscreen</button>
-                </div>
+	<!-- ---------- RESULTS PANEL (from example) ---------- -->
+	<div class="minor-section results">
+		<div class="results-top">
+			<div class="image-container">
+				<p id="original"></p>
+				<p class="caption"></p>
+			</div>
+			<div class="image-container">
+				<p id="active"></p>
+				<p>Active Image</p>
+			</div>
+			<div class="image-container">
+				<p id="best"></p>
+				<p>Best Image</p>
+			</div>
+		</div>
+
+		<div class="controls">
+			<div class="controls-col1">
+				<select id="dropper"></select>
+				<button id="restart">restart</button>
+
+				<p>
+					Mutation rate (<span id="rate"></span>%):<br>
+					<input id="slider" type="range" min="1" max="100" value="100">
+				</p>
 			</div>
 
-			<div class="minor-section">
-				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+			<div class="controls-col2">
+				<p>Active score: <span id="activeScore"></span></p>
+				<p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+				<p>Best score: <span id="bestScore"></span></p>
 			</div>
+		</div>
 
-			<div class="minor-section">
-				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
-			</div>
+		<div class="results-bottom">
+			<p id="memory" data-max-items="28"></p>
+		</div>
+	</div>
 
-			<div class="minor-section">
-				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
-			</div>
+	<!-- ---------- WRITE-UPS ---------- -->
+	<div class="minor-section">
+		<h2>Description</h2>
+		<p>This project essentially uses a genetic algorithm to create a generator that “splits” an original image into mosaics, which then evolve through a 30-second manual annealing process, culminating in us “squinting” to recognize the original image. We control the mutation rate with a slider: 100 % for extensive exploration, 1 % for almost static, thus realizing a coarse → fine adaptive search.
+	</div>
 
-		</section>
-		<nav id="links" class="minor-section">
-			<!-- Put link back to homepage here. -->
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-            </ul>
-		</nav>
-	</main>
+	<div class="minor-section">
+		<h2>Technical</h2>
+		<p>Sampling: initDesign() first reads the inspiration image and automatically performs k-means (K=6) to get the main color. If the image is almost black and white, then go pixel-mode, otherwise press inspiration.grid to build a colored square.</p>
+		<p>Mutations: mutateDesign() uses Gaussian dithering σ ∝ rate to change position/size/color, we can clearly see all the squares moving at high speed especially when the mutation rate is high.</p>
+		<p>Valuation: The squared error is compared pixel by pixel with the original image scaled to the same size after rendering, scoring 1/(1+MSE), and the optimal photo is saved below by memorialize().</p>
+	</div>
+
+	<div class="minor-section">
+		<h2>Reflection</h2>
+		<p>This project was done by team, with me, Hengyang Ye, and my teammate, Tinyu Xie, and we decided to write Reflection separately because it was unlikely that we would get the exact same feedback. My biggest feeling about this assignment is actually funny, initially I first posted some pictures that were really hard to do a good performance, but then I was much better after I went with what the PPT said that I should have chosen a higher contrast photo, which I was going to try and then gave up on.</p>
+	</div>
+
+</section>
+
+<!-- nav -->
+<nav id="links" class="minor-section">
+	<ul><li><a href="../index.html">Home</a></li></ul>
+</nav>
+</main>
 </body>
 </html>
