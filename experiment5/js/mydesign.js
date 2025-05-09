@@ -4,7 +4,7 @@
           frameCount, map, color */
 
 // --------------------------------------------------
-// 0) Inspirations  (可在别的文件维护；留此占位演示 grid 字段)
+// 0) Inspirations  
 // --------------------------------------------------
 function getInspirations() {
     return [
